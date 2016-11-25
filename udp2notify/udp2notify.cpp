@@ -1,26 +1,18 @@
-/* Kompilen:
- *   g++ `pkg-config --cflags glib-2.0 gtk+-2.0` udp2notify.cpp -o udp2notify `pkg-config --libs glib-2.0 gtk+-2.0` -lnotify -Wall
- *
- * client z.B. mit netcat:
- *   nc -u 127.0.0.1 58000
- */
 #include <libnotify/notify.h>
 #include <arpa/inet.h>
 #include <sys/socket.h>
 #include <string>
 #include <cstring> // memset
 #include <cstdlib>
+#include <cstdio>
 
 #define BUFLEN          512
 #define SPLITTOKEN      " || "
 #define SPLITTOKEN_LEN  4
 #define DEFAULT_PORT    58000
 
-int main(int argc, char *argv[]) {
-	
+void daemonProcess(int port) {
 	struct sockaddr_in si_me, si_other;
-	int port = DEFAULT_PORT;
-	if (argc >1) port = std::atoi(argv[1]);
 	
 	int s;
 	socklen_t recv_len;
@@ -32,6 +24,8 @@ int main(int argc, char *argv[]) {
 	si_me.sin_port = htons(port);
 	si_me.sin_addr.s_addr = htonl(INADDR_ANY);
 	bind(s, (struct sockaddr*)&si_me, sizeof(si_me) );
+	
+	printf("daemon running\n");
 
 	while(1==1) {
 		char buf[BUFLEN] = {0};
@@ -56,7 +50,24 @@ int main(int argc, char *argv[]) {
 			notify_uninit();
 		}
 	}
-	
+	// never reached ?!
 	close(s);
+	printf("daemon killed ?!\n");
+}
+
+int main(int argc, char *argv[]) {
+	int port = DEFAULT_PORT;
+	if (argc >1) port = std::atoi(argv[1]);
+	pid_t pid;
+
+	pid = fork();
+	if (pid < 0) {
+		return 1;
+	}
+	if (pid > 0) {
+		printf("daemon started (pid = %d)\n", pid);
+		return 0;
+	}
+	daemonProcess(port);
 	return 0;
 }
