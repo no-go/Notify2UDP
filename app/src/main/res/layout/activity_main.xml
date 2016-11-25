@@ -9,43 +9,62 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="click.dummer.notiviewer.MainActivity">
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:id="@+id/portEdit"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/hostEdit"
+        android:hint="port" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/hostEdit"
+        android:hint="hostname or IP" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Notification"
+        android:text="store hostname:port \nand\n init a Notification"
         android:id="@+id/btnCreateNotify"
         android:onClick="buttonClicked"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"/>
-
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Clear All Notification"
-        android:id="@+id/btnClearNotify"
-        android:onClick="buttonClicked"
-        android:layout_below="@+id/btnCreateNotify"
-        android:layout_alignLeft="@+id/btnCreateNotify"
-        android:layout_alignRight="@+id/btnCreateNotify"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView"
+        android:layout_below="@+id/hostEdit"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/btnListNotify" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="List of Notification"
-        android:id="@+id/btnListNotify"
-        android:onClick="buttonClicked"
-        android:layout_below="@+id/btnClearNotify"
-        android:layout_alignLeft="@+id/btnClearNotify"
-        android:layout_alignRight="@+id/btnClearNotify"/>
+        android:layout_alignParentEnd="true" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btnCreateNotify"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please start on your host system\n\n  ./udp2notify [port]\n\nto receive the messages WITHOUT any ENCRYPTION on your desktop. Do not forget to open the port in your firewall. Give this Android App 'Notify to UDP' access to your notifications."
+                android:id="@+id/textView"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:textAlignment="gravity"
+                android:gravity="bottom"
+                android:scrollbarAlwaysDrawHorizontalTrack="false"
+                android:scrollbarAlwaysDrawVerticalTrack="false" />
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

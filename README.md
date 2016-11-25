@@ -1,3 +1,6 @@
 # Notify2Udp
 
-Grab Notifications and send them PLAIN via WiFi to a device (IP and Port) in your LAN. A small daemon get them and send them to GNOME, KDE, Unity or xfce.
+Grab Notifications and send them PLAIN via WiFi to a device (IP and Port) in your LAN.
+A small daemon get them and send them to GNOME, KDE, Unity or xfce.
+
+[Notify to UDP](../../raw/master/Notify2Udp/app/app-release.apk)
