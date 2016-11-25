@@ -3,4 +3,4 @@
 Grab Notifications and send them PLAIN via WiFi to a device (IP and Port) in your LAN.
 A small daemon get them and send them to GNOME, KDE, Unity or xfce.
 
-[Notify to UDP](../../raw/master/Notify2Udp/app/app-release.apk)
+Signed Apk: [Notify to UDP](../../raw/master/app/app-release.apk)
