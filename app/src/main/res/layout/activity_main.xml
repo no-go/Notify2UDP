@@ -40,7 +40,8 @@
         android:onClick="buttonClicked"
         android:layout_below="@+id/hostEdit"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true" >
+    </Button>
 
     <ScrollView
         android:layout_width="match_parent"

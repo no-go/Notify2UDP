@@ -52,6 +52,14 @@ public class NotificationService extends NotificationListenerService {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
                 extras = noti.extras;
                 title = extras.getString(Notification.EXTRA_TITLE);
+                String dummy = extras.getString(Notification.EXTRA_TEXT);
+                if (dummy != null && dummy.length()> 40) {
+                    msg = dummy;
+                }
+                dummy = extras.getString(Notification.EXTRA_BIG_TEXT);
+                if (dummy != null && dummy.length()> 40) {
+                    msg = dummy;
+                }
             }
             if (msg.startsWith(title)) {
                 msg = msg.replaceFirst(title, "").substring(2);

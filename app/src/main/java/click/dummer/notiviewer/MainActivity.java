@@ -1,6 +1,5 @@
 package click.dummer.notiviewer;
 
-import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,12 +8,12 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private TextView txtView;
     private EditText hostName;
@@ -32,6 +31,8 @@ public class MainActivity extends Activity {
         mPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
         hostName = (EditText) findViewById(R.id.hostEdit);
         portEdit = (EditText) findViewById(R.id.portEdit);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
     }
 
     @Override
@@ -77,9 +78,9 @@ public class MainActivity extends Activity {
         NotificationManager nManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         NotificationCompat.Builder ncomp = new NotificationCompat.Builder(this);
         ncomp.setContentTitle(getString(R.string.app_name));
-        ncomp.setContentText("Notification Example");
+        ncomp.setContentText("I am the Ticker");
         ncomp.setTicker("I am the Ticker");
-        ncomp.setSmallIcon(android.R.drawable.btn_dialog);
+        ncomp.setSmallIcon(R.mipmap.ic_launcher);
         ncomp.setAutoCancel(true);
         nManager.notify((int)System.currentTimeMillis(), ncomp.build());
     }
