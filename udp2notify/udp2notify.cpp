@@ -43,7 +43,9 @@ void daemonProcess(int port) {
 			notify = notify_notification_new(
 				title.c_str(),
 				msg.c_str(),
-				"dialog-information");
+//				"dialog-information"
+				"/home/unknwon/Android/Projects/NotiViewer/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+			);
 			notify_notification_set_timeout(notify, -1);
 			notify_notification_show(notify, NULL);
 			g_object_unref(G_OBJECT (notify));
