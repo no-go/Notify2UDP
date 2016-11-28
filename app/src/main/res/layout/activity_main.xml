@@ -33,6 +33,8 @@
         android:hint="hostname or IP" />
 
     <Button
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="store hostname:port \nand\n init a Notification"
@@ -41,6 +43,7 @@
         android:layout_below="@+id/hostEdit"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" >
+        <requestFocus />
     </Button>
 
     <ScrollView
@@ -58,10 +61,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Please start on your host system\n\n  ./udp2notify [port]\n\nto receive the messages WITHOUT any ENCRYPTION on your desktop. Do not forget to open the port in your firewall. Give this Android App 'Notify to UDP' access to your notifications."
+                android:text="@string/howto"
                 android:id="@+id/textView"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
                 android:textAlignment="gravity"
                 android:gravity="bottom"
                 android:scrollbarAlwaysDrawHorizontalTrack="false"

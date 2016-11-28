@@ -29,3 +29,7 @@ To stop or kill the `udp2notify` daemon:
 You can test sending UDP packages with:
 
     netcat -u 127.0.0.1 58000
+
+Because Netcat by be broken in that point, use socat for Broadcast:
+
+    socat - UDP-DATAGRAM:255.255.255.255:58000,broadcast

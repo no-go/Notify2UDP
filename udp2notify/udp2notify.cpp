@@ -22,7 +22,9 @@ void daemonProcess(int port) {
 	memset((char *) &si_me, 0, sizeof(si_me));
 	si_me.sin_family = AF_INET;
 	si_me.sin_port = htons(port);
-	si_me.sin_addr.s_addr = htonl(INADDR_ANY);
+	/// @todo make broadcast and deamon optional !! -------------
+	si_me.sin_addr.s_addr = htonl(INADDR_BROADCAST);
+	//si_me.sin_addr.s_addr = htonl(INADDR_ANY);
 	bind(s, (struct sockaddr*)&si_me, sizeof(si_me) );
 	
 	printf("daemon running\n");
@@ -43,8 +45,8 @@ void daemonProcess(int port) {
 			notify = notify_notification_new(
 				title.c_str(),
 				msg.c_str(),
-//				"dialog-information"
-				"/home/unknwon/Android/Projects/NotiViewer/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+				"dialog-information"
+//				"/tmp/dummy/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
 			);
 			notify_notification_set_timeout(notify, -1);
 			notify_notification_show(notify, NULL);

@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
         String host = "";
         String port = "";
         if (mPreferences.contains("hostname")) {
-            host = mPreferences.getString("hostname", "192.168.1.100");
+            host = mPreferences.getString("hostname", "255.255.255.255");
         }
-        hostName.setText(host.equals("") ? "192.168.1.100" : host);
+        hostName.setText(host.equals("") ? "255.255.255.255" : host);
         if (mPreferences.contains("port")) {
             port = mPreferences.getString("port", "58000");
         }

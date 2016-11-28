@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Notify to UDP</string>
+    <string name="howto">Please start on your host system\n\n ./udp2notify [port]\n\n
+        to receive the messages WITHOUT any ENCRYPTION on your desktop. Do not forget to
+        open the port in your firewall. Give this Android App \'Notify to UDP\' access to
+        your notifications. Use 255.255.255.255 for UDP broadcast. Sometimes this does
+        not work and you need the hostname or IP-Address (both not iplement in udp2notify yet)
+        of the device running udp2notify daemon.</string>
 </resources>
