@@ -18,7 +18,16 @@ Signed Apk: [Notify to UDP](../../raw/master/app/app-release.apk)
 
 UDP 2 Notify for your Linux System: [here](../../src/master/udp2notify)
 
-## TODO
+## Modes (udp2notify binary)
 
-- make broadcast optional
-- make deamon optional
+- as daemon (default)
+- listen to broadcast (default)
+- listen on Port 58000 (default)
+
+non Daemon and listen to 65000:
+
+    ./udp2notify 65000 -d
+
+listen to 65000 and non broadcast UDP packages:
+
+    ./udp2notify 65000 -b
