@@ -31,7 +31,6 @@ public class NotificationService extends NotificationListenerService {
     public void onCreate() {
         super.onCreate();
         mPreferences = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
-
     }
 
     @Override
@@ -41,10 +40,9 @@ public class NotificationService extends NotificationListenerService {
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
-        Intent i = new Intent("click.dummer.notiviewer.NOTIFICATION_LISTENER_EXAMPLE");
+        Intent i = new Intent("click.dummer.notiviewer.NOTIFICATION_LISTENER");
         Notification noti = sbn.getNotification();
-        Log.i(TAG, "onNotificationPosted: " + sbn.getPackageName() + "\n");
-        i.putExtra("notification_event","onNotificationPosted: " + noti.tickerText + "\n");
+        Log.i(TAG, "onNotificationPosted from " + sbn.getPackageName() + "\n");
         Bundle extras = null;
         String title = getString(R.string.app_name);
         String msg = (String) noti.tickerText;
@@ -53,11 +51,11 @@ public class NotificationService extends NotificationListenerService {
                 extras = noti.extras;
                 title = extras.getString(Notification.EXTRA_TITLE);
                 String dummy = extras.getString(Notification.EXTRA_TEXT);
-                if (dummy != null && dummy.length()> 40) {
+                if (dummy != null && dummy.length()> 25) {
                     msg = dummy;
                 }
                 dummy = extras.getString(Notification.EXTRA_BIG_TEXT);
-                if (dummy != null && dummy.length()> 40) {
+                if (dummy != null && dummy.length()> 25) {
                     msg = dummy;
                 }
             }
@@ -66,6 +64,7 @@ public class NotificationService extends NotificationListenerService {
             }
             sendNetBroadcast((title + SPLITTOKEN + msg).trim());
         }
+        i.putExtra("notification_event", msg);
         sendBroadcast(i);
     }
 
@@ -76,7 +75,7 @@ public class NotificationService extends NotificationListenerService {
 
         try {
             InetAddress address = InetAddress.getByName(
-                    mPreferences.getString("hostname", "192.168.1.100")
+                    mPreferences.getString("hostname", "192.168.1.100").trim()
             );
 
             //Open a random port to send the package
@@ -85,7 +84,7 @@ public class NotificationService extends NotificationListenerService {
             byte[] sendData = messageStr.getBytes();
             DatagramPacket sendPacket = new DatagramPacket(
                     sendData, sendData.length, address,
-                    Integer.parseInt(mPreferences.getString("port", "58000"))
+                    Integer.parseInt(mPreferences.getString("port", "58000").trim())
             );
             socket.send(sendPacket);
             Log.i(TAG, getClass().getName() + "Broadcast packet sent to: " + address.getHostAddress());

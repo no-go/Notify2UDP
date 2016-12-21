@@ -83,8 +83,10 @@ void daemonProcess(int port, bool broad) {
 			notify_init("UDP to Notify");
 			std::string title_msg = buf;
 			std::string title = "";
+			std::string ipAddr = inet_ntoa(si_other.sin_addr);
 			std::string msg = "";
 			title = title_msg.substr(0, title_msg.find(SPLITTOKEN));
+			if (title == (std::string) "[myip]") title = ipAddr;
 			msg = title_msg.substr(title_msg.find(SPLITTOKEN)+SPLITTOKEN_LEN);
 			notify = notify_notification_new(
 				title.c_str(),

@@ -8,8 +8,8 @@ android {
         applicationId "click.dummer.notiviewer"
         minSdkVersion 21
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "0.4"
     }
     buildTypes {
         release {
