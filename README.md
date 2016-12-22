@@ -17,7 +17,7 @@ A small daemon get them and send them to GNOME, KDE, Unity or xfce.
 
 Signed Apk: [Notify to UDP](https://raw.githubusercontent.com/no-go/Notify2UDP/master/app/app-release.apk)
 
-UDP 2 Notify for your Linux System: [here](tree/master/udp2notify)
+UDP 2 Notify for your Linux System: [here](../../tree/master/udp2notify)
 
 ## Modes (udp2notify binary)
 
