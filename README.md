@@ -1,5 +1,6 @@
 # Notify2Udp
 
+**send notifications to GNOME, KDE, Unity or xfce**
 
 Grab Notifications and send them PLAIN via WiFi to a device (IP or Broadcast and Port) in your LAN.
 A small daemon get them and send them to GNOME, KDE, Unity or xfce.

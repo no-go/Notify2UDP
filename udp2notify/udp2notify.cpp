@@ -11,39 +11,6 @@
 #define SPLITTOKEN_LEN  4
 #define DEFAULT_PORT    58000
 
-/*
-static GMainLoop *loop;
-
-static void ExampleAct(NotifyNotification *n, const char * action) {
-    g_assert(action != NULL);
-    printf("You clicked.\n");
-    notify_notification_close(n, NULL);
-    g_main_loop_quit(loop);
-}
-
-void exampleAddAction(NotifyNotification *notify) {
-    bool accepts_actions = false;
-    GList * capabilities = notify_get_server_caps();
-    GList * c;
-    if(capabilities != NULL) {
-        for(c = capabilities; c != NULL; c = c->next) {
-            if(std::strcmp((char*)c->data, "actions") == 0 ) {
-                accepts_actions = true;
-                break;
-            }
-        }
-        g_list_foreach(capabilities, (GFunc) g_free, NULL);
-        g_list_free(capabilities);
-    }
-
-    if(accepts_actions) {
-        notify_notification_add_action(
-            notify, "media-skip-backward", "Previous", (NotifyActionCallback) ExampleAct, NULL, NULL
-        );
-    }
-}
-*/
-
 void daemonProcess(int port, bool broad) {
 	struct sockaddr_in si_me, si_other;
 	
@@ -78,7 +45,6 @@ void daemonProcess(int port, bool broad) {
 			&si_other, &slen
 		);
 		if (recv_len > 0) {
-			//loop = g_main_loop_new(NULL, false);
 			NotifyNotification *notify;
 			notify_init("UDP to Notify");
 			std::string title_msg = buf;
@@ -92,15 +58,11 @@ void daemonProcess(int port, bool broad) {
 				title.c_str(),
 				msg.c_str(),
 				NULL
-//				"dialog-information"
-//				"/tmp/dummy/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
 			);
-			//exampleAddAction(notify);
 			notify_notification_set_timeout(notify, 50000); // -1 for ever?!
 			notify_notification_show(notify, NULL);
 			g_object_unref(G_OBJECT (notify));
 			notify_uninit();
-			//g_main_loop_run(loop);
 		}
 	}
 	// never reached ?!

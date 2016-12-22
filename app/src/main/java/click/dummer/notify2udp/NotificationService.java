@@ -1,21 +1,13 @@
-package click.dummer.notiviewer;
+package click.dummer.notify2udp;
 
 import android.app.Notification;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.net.DhcpInfo;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.preference.Preference;
-import android.provider.SyncStateContract;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
-import android.widget.TextView;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -40,7 +32,7 @@ public class NotificationService extends NotificationListenerService {
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
-        Intent i = new Intent("click.dummer.notiviewer.NOTIFICATION_LISTENER");
+        Intent i = new Intent("click.dummer.notify2udp.NOTIFICATION_LISTENER");
         Notification noti = sbn.getNotification();
         Log.i(TAG, "onNotificationPosted from " + sbn.getPackageName() + "\n");
         Bundle extras = null;

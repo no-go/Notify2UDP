@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "click.dummer.notiviewer"
+        applicationId "click.dummer.notify2udp"
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 4

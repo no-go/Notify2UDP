@@ -1,4 +1,4 @@
-package click.dummer.notiviewer;
+package click.dummer.notify2udp;
 
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
@@ -7,24 +7,66 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String PROJECT_LINK = "https://github.com/no-go/Notify2UDP/";
+    public static final String PROJECT_LINK2 = "https://github.com/no-go/Notify2UDP/tree/master/udp2notify/";
+    public static final String FLATTR_ID = "o6wo7q";
+    private String FLATTR_LINK;
+
     private TextView txtView;
     private EditText hostName;
     private EditText portEdit;
 
     private NotificationReceiver nReceiver;
     private SharedPreferences mPreferences;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        try {
+            FLATTR_LINK = "https://flattr.com/submit/auto?fid="+FLATTR_ID+"&url="+
+                    java.net.URLEncoder.encode(PROJECT_LINK, "ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_flattr:
+                Intent intentFlattr = new Intent(Intent.ACTION_VIEW, Uri.parse(FLATTR_LINK));
+                startActivity(intentFlattr);
+                break;
+            case R.id.action_project:
+                Intent intentProj= new Intent(Intent.ACTION_VIEW, Uri.parse(PROJECT_LINK));
+                startActivity(intentProj);
+                break;
+            case R.id.action_project2:
+                Intent intentProj2= new Intent(Intent.ACTION_VIEW, Uri.parse(PROJECT_LINK2));
+                startActivity(intentProj2);
+                break;
+            default:
+                return false;
+        }
+        return true;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             alertDialogBuilder.show();
         }
 
-        IntentFilter filter = new IntentFilter("click.dummer.notiviewer.NOTIFICATION_LISTENER");
+        IntentFilter filter = new IntentFilter("click.dummer.notify2udp.NOTIFICATION_LISTENER");
         registerReceiver(nReceiver, filter);
 
         String host = "";

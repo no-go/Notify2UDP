@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Notify to UDP</string>
+    <string name="howto">Bitte starte auf deinem Computer ...\n
+        \n ./udp2notify [PORT]\n
+        \noder für den nicht Broadcast (=IP) Modus:\n ./udp2notify PORT -b\n
+        \noder für den nicht Daemon Modus:\n ./udp2notify PORT -d\n
+        \noder\n ./udp2notify PORT -d -b\n
+        \n
+        ... um Nachrichten des Smartphones auf deinen Linux-Desktop
+        zu bekommen. DIESE NACHRICHTEN SIND UNVERSCHLÜSSELT. Vergesse auch nicht,
+        in deiner Firewall den PORT zu öffnen. Benutze 255.255.255.255 für UDP
+        Broadcast (JEDER BEKOMMT DIE NACHRICHTEN). Wenn z.B. dein Router Broadcast
+        nicht zulässt, kannst du den Hostnamen oder die richtige IP-Adresse
+        des Computers angeben, auf dem udp2notify läuft.</string>
+    <string name="ok">ok</string>
+    <string name="sorry">Tut mir leid, aber \'%s\' braucht natürlich Zugriff auf
+        deine Benachrichtigungen. Diesen Zugriff der App musst du in den Einstellungen deines
+        Smartphones gewähren!</string>
+    <string name="flattr_this">Mikro-Spende!</string>
+    <string name="projPage">Homepage</string>
+    <string name="projPage2">udp2notify Server</string>
+</resources>
