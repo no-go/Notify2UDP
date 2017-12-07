@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
-        applicationId "click.dummer.notify2udp"
-        minSdkVersion 21
+        applicationId "click.dummer.udpchat"
+        minSdkVersion 16
         targetSdkVersion 23
-        versionCode 5
-        versionName "0.5"
+        versionCode 1
+        versionName "0.1"
     }
     buildTypes {
         release {

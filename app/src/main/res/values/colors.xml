@@ -2,4 +2,5 @@
 <resources>
     <color name="colorAccent2">#8F40FF</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="orange">#40ff6600</color>
 </resources>

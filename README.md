@@ -1,34 +1,14 @@
-# Notify2UDP
+# UDP Chat
 
-**send notifications to GNOME, KDE, Unity or xfce**
+send a text via UDP to ip+port or just port (leave ip address free and it will be send as broadcast).
+Listen on a port and get messages via UDP.
 
-Grab Notifications and send them PLAIN via WiFi to a device (IP or Broadcast and Port) in your LAN.
-A small daemon get them and send them to GNOME, KDE, Unity or xfce.
+![screenshot](screenshot.png)
 
 ## App Icon
 
 ![The App Icon](app/src/main/res/mipmap-xhdpi/ic_launcher.png)
 
-## Screenshot (old)
+## Get the App
 
-![Screenshot](photo_v01.jpg)
-
-## Download
-
-Signed Apk: [Notify to UDP](https://raw.githubusercontent.com/no-go/Notify2UDP/master/app/app-release.apk)
-
-UDP 2 Notify for your Linux System: [here](../../tree/master/udp2notify)
-
-## Modes (udp2notify binary)
-
-- as daemon (default)
-- listen to broadcast (default)
-- listen on Port 58000 (default)
-
-non Daemon and listen to 65000:
-
-    ./udp2notify 65000 -d
-
-listen to 65000 and non broadcast UDP packages:
-
-    ./udp2notify 65000 -b
+You can get a signed APK from here (Android 4.1+): [APK](https://raw.githubusercontent.com/no-go/Notify2UDP/udpChat/app/app-release.apk)

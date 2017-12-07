@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="click.dummer.notify2udp.MainActivity">
+    tools:context="click.dummer.udpchat.MainActivity">
 
 
     <EditText
@@ -20,7 +20,9 @@
         android:id="@+id/portEdit"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/hostEdit"
-        android:hint="port" />
+        android:hint="(listen)port"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/hostEdit" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -30,43 +32,70 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:id="@+id/hostEdit"
-        android:hint="hostname or IP" />
+        android:hint="hostname or IP"
+        android:layout_alignParentLeft="true" />
+
+    <EditText
+        android:id="@+id/messageEdit"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/hostEdit"
+        android:ems="10"
+        android:gravity="top|left|start"
+        android:inputType="textMultiLine"
+        android:hint="message"
+        android:textAlignment="gravity" />
 
     <Button
-        android:focusable="true"
-        android:focusableInTouchMode="true"
+        android:id="@+id/btnCreateNotify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="store hostname:port \nand\n init a Notification"
-        android:id="@+id/btnCreateNotify"
-        android:onClick="buttonClicked"
-        android:layout_below="@+id/hostEdit"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" >
+        android:layout_below="@+id/messageEdit"
+        android:onClick="sendButton"
+        android:text="send">
+
         <requestFocus />
     </Button>
+
+    <CheckBox
+        android:id="@+id/listenBroadcast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="bcButton"
+        android:layout_below="@+id/btnCreateNotify"
+        android:enabled="true"
+        android:text="listen on Broadcast" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/btnCreateNotify"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="12dp">
+        android:layout_below="@+id/listenBroadcast"
+        android:layout_marginTop="12dp"
+        android:background="@color/orange">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/howto"
-                android:id="@+id/textView"
-                android:textAlignment="gravity"
                 android:gravity="bottom"
                 android:scrollbarAlwaysDrawHorizontalTrack="false"
-                android:scrollbarAlwaysDrawVerticalTrack="false" />
+                android:scrollbarAlwaysDrawVerticalTrack="false"
+                android:text=":-)"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
         </LinearLayout>
     </ScrollView>
+
 </RelativeLayout>
