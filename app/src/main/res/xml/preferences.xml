@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:key="hostname"
+        android:title="Hostname or IP" />
+
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="listen_Broadcast"
+        android:title="listen Broadcast" />
+
+    <EditTextPreference
+        android:defaultValue="58000"
+        android:key="port"
+        android:title="Port (listen and send)" />
+
+</PreferenceScreen>

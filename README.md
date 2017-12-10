@@ -3,7 +3,7 @@
 send a text via UDP to ip+port or just port (leave ip address free and it will be send as broadcast).
 Listen on a port and get messages via UDP.
 
-![screenshot](screenshot.png)
+![screenshot](screenshot.jpg)
 
 ## App Icon
 
